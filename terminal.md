@@ -8,8 +8,8 @@ to activate:
 to deactivate:
 deactivate
 
-to import packages:
+to update requirements.txt:
 python -m pip freeze > C:\Users\alexa\Documents\program\Python\glowing-octo-winner\requirements.txt
 
-to update requirements.txt:
+to import packages:
 python -m pip install -r C:\Users\alexa\Documents\program\Python\glowing-octo-winner\requirements.txt
