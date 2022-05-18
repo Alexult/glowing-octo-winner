@@ -12,7 +12,7 @@ while True:
         print("What movie do you want to vote for?")
         movie = input()
         api.vote(con, movie)
-        print("You have successfully voted for" + movie)
+        print("You have successfully voted for " + movie)
     elif option == "2":
         result = api.removeFirst(con)
         if result == False:

@@ -1,5 +1,5 @@
 import numpy as np
-
+import random
 
 def vote(con, name):
     result = con.execute("SELECT Votes FROM tbl WHERE Movie == ?", [name]).fetchnumpy()
@@ -12,9 +12,11 @@ def vote(con, name):
 
 
 def removeFirst(con):
-    result = con.execute("SELECT Movie FROM tbl ORDER BY Votes DESC LIMIT 1").fetchnumpy()
+    result = con.execute("SELECT Movie FROM tbl WHERE Votes = (SELECT MAX(Votes) FROM tbl)").fetchnumpy()
     if np.size(result['Movie']) == 0:
         return False
-    movie = result['Movie'][0]
+    size = np.size(result['Movie'])
+    rand = np.floor(size * random.random())
+    movie = result['Movie'][int(rand.item())]
     con.execute("DELETE FROM tbl WHERE Movie == ?", [movie])
     return movie
